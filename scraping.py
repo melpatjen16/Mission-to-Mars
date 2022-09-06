@@ -46,12 +46,12 @@ def mars_news(browser):
         # Use the parent element to find the first 'a' tag and save it as 'news_title'
         news_title = slide_elem.find('div', class_='content_title').get_text()
         # Use the parent element to find the paragraph text
-        news_p = slide_elem.find('div', class_='article_teaser_body').get_text(
+        news_p = slide_elem.find('div', class_='article_teaser_body').get_text()
   
-  except AttributeError:
+    except AttributeError:
         return None, None
 
-    return news_title, news p
+    return news_title, news_p
 
 # ### JPL Space Images Featured Image
 
@@ -86,11 +86,11 @@ def featured_image(browser):
 def mars_facts():
             
     # Add try/except for error handling         
-     try:
+    try:
       # use 'read_html" to scrape the facts table into a dataframe
       df = pd.read_html('https://galaxyfacts-mars.com')[0]
-   except BaseException:
-      return None    
+    except BaseException:
+        return None    
             
     # Assign columns and set index of dataframe
     df.columns=['Description', 'Mars', 'Earth']
