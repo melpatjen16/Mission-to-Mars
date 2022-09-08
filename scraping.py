@@ -9,10 +9,12 @@ import datetime as dt
 def scrape_all():
     # Initiate headless driver for deployment
     executable_path = {'executable_path': ChromeDriverManager().install()}
-    browser = Browser('chrome', **executable_path, headless=True)
+    browser = Browser('chrome', executable_path="chromedriver", headless=True)
     
     news_title, news_paragraph = mars_news(browser)
-    
+    # 2. Create a list to hold the images and titles.
+    hemisphere_image_urls = []
+
     # Run all scraping functions and store results in dictionary
     data = {
       "news_title": news_title,
